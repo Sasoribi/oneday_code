@@ -12,13 +12,11 @@ package io.sasoribi.algorithm.linkedlist;
  * }
  */
 public class CircleList {
-    // 链表成环 内存消耗较高
+    // #141 环形链表
     public boolean hasCycle(ListNode head) {
-        ListNode low;
-        ListNode fast;
-        if ((fast = low = head) == null){
-            return false;
-        }
+        ListNode low = head;
+        ListNode fast = head;
+        
         while (true){
             if(fast == null || fast.next == null){
                 return false;

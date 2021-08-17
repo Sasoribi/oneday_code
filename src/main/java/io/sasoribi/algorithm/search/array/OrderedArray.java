@@ -26,6 +26,7 @@ package io.sasoribi.algorithm.search.array;
  *
  */
 public class OrderedArray {
+    //#1920
     public int[] buildArray(int[] nums) {
         int[] result = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
@@ -33,4 +34,7 @@ public class OrderedArray {
         }
         return result;
     }
+    
+    //extra-solution 原地构建,通过高位保存最终值
+    
 }

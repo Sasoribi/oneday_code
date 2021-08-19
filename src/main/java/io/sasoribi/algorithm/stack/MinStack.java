@@ -31,20 +31,21 @@ class MinStack {
     public void push(int val) {
         //initial head
         if (head == null) {
-            head = new ListNode(val, null);
+            head = new ListNode(val, null,head);
             minium = head;
             return;
         }
-        head = new ListNode(val, head);
+        head = new ListNode(val, head,null);
         
-        if(head.val > minium.val){
+        if (head.val < minium.val) {
+            head.setUnder(minium);
             minium = head;
         }
     }
     
     public void pop() {
-        if(head.equals(minium)){
-        
+        if (head.equals(minium)) {
+            minium = minium.under;
         }
         head = head.next;
     }
@@ -60,14 +61,18 @@ class MinStack {
     static class ListNode {
         int val;
         ListNode next;
+        ListNode under;
         
-        public ListNode(int val, ListNode next) {
+        
+        public ListNode(int val, ListNode next,ListNode under) {
             this.val = val;
             this.next = next;
+            this.under = under;
         }
         
         public ListNode() {
         }
+        
         
         public int getVal() {
             return val;
@@ -83,6 +88,14 @@ class MinStack {
         
         public void setNext(ListNode next) {
             this.next = next;
+        }
+        
+        public ListNode getUnder() {
+            return under;
+        }
+        
+        public void setUnder (ListNode under) {
+            this.under = under;
         }
     }
 }

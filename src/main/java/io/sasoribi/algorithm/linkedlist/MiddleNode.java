@@ -6,6 +6,7 @@ package io.sasoribi.algorithm.linkedlist;
  * If there are two middle nodes, return the second middle node.
  */
 public class MiddleNode {
+    //#876
     
     public ListNode middleNode(ListNode head) {
         ListNode fast = head;

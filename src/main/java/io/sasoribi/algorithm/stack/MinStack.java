@@ -23,7 +23,7 @@ class MinStack {
      */
     
     private ListNode head;
-    private ListNode minium;
+    private ListNode minimum;
     
     public MinStack() {
     }
@@ -31,21 +31,24 @@ class MinStack {
     public void push(int val) {
         //initial head
         if (head == null) {
-            head = new ListNode(val, null,head);
-            minium = head;
+            head = new ListNode(val, null, head);
+            minimum = head;
             return;
         }
-        head = new ListNode(val, head,null);
+        //入栈
+        head = new ListNode(val, head, null);
         
-        if (head.val < minium.val) {
-            head.setUnder(minium);
-            minium = head;
+        //当头比当前栈最小值还要小的时候,移动minimum指针
+        if (head.val < minimum.val) {
+            head.setUnder(minimum);
+            minimum = head;
         }
     }
     
     public void pop() {
-        if (head.equals(minium)) {
-            minium = minium.under;
+        //出栈的节点同时是最小节点时,链表寻址
+        if (head.equals(minimum)) {
+            minimum = minimum.under;
         }
         head = head.next;
     }
@@ -55,7 +58,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return minium.val;
+        return minimum.val;
     }
     
     static class ListNode {
@@ -64,7 +67,7 @@ class MinStack {
         ListNode under;
         
         
-        public ListNode(int val, ListNode next,ListNode under) {
+        public ListNode(int val, ListNode next, ListNode under) {
             this.val = val;
             this.next = next;
             this.under = under;
@@ -94,7 +97,7 @@ class MinStack {
             return under;
         }
         
-        public void setUnder (ListNode under) {
+        public void setUnder(ListNode under) {
             this.under = under;
         }
     }

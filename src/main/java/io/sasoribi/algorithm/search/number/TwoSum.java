@@ -1,4 +1,4 @@
-package io.sasoribi.algorithm.search;
+package io.sasoribi.algorithm.search.number;
 
 import java.util.HashMap;
 import java.util.Map;

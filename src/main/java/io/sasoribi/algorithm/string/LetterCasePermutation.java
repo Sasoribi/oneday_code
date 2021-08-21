@@ -33,6 +33,7 @@ import java.util.List;
  *
  */
 public class LetterCasePermutation {
+    //#784
     public List<String> letterCasePermutation(String s) {
         List<String> rs = new ArrayList<>();
     

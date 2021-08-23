@@ -59,6 +59,7 @@ public class MaxDepthOfTree {
         queue.offer(root);
         
         while (!queue.isEmpty()) {
+            // 每层的节点数
             currentLay = queue.size();
             while (currentLay > 0) {
                 TreeNode node = queue.poll();
@@ -69,7 +70,7 @@ public class MaxDepthOfTree {
                     queue.offer(node.right);
                 currentLay--;
             }
-            depth++;
+            depth++;//当前层节点已经遍历完成
         }
         
         return depth;

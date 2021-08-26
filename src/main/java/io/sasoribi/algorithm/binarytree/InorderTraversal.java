@@ -26,6 +26,7 @@ public class InorderTraversal {
             root = stack.pop();
             list.add(root.val);
             
+            //move point to right child
             root = root.right;
         }
         return list;

@@ -98,23 +98,5 @@ public class MaxDepthOfTree {
         //最大子树深度 + 1(当前层)
         return 1 + Math.max(left, right);
     }
-    
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        
-        TreeNode() {
-        }
-        
-        TreeNode(int val) {
-            this.val = val;
-        }
-        
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
+
 }

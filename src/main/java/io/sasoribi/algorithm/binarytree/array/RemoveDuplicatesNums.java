@@ -8,6 +8,19 @@ package io.sasoribi.algorithm.binarytree.array;
 public class RemoveDuplicatesNums {
     //#26. Remove Duplicates from Sorted Array
     public int removeDuplicates(int[] nums) {
+        int length = nums.length;
         
+        int slow = 1;
+        int fast = 1;
+        while (length > fast){
+            //fast-1和fast来判断,否则slow指针指的可能是前面的数据冗余,导致重复替换
+            if(nums[fast-1] != nums[fast]){
+                nums[slow] = nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
     }
+    
 }

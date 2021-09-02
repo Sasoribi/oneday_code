@@ -1,6 +1,7 @@
 package io.sasoribi.algorithm.calculate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,13 +22,18 @@ import java.util.List;
  * 输出：[[1]]
  */
 public class Permutations {
+    public static void main(String[] args) {
+        new Permutations().permute(new int[]{1, 1, 2}).forEach(System.out::println);
+    }
     
     public List<List<Integer>> permute(int[] nums) {
+        // 排序
+        Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
         boolean[] statusArr = new boolean[nums.length];
         List<Integer> subAns = new ArrayList<>();
         
-        depthFirstSearch(nums, subAns, statusArr,ans);
+        depthFirstSearch(nums, subAns, statusArr, ans);
         return ans;
     }
     
@@ -41,6 +47,7 @@ public class Permutations {
             ans.add(new ArrayList<>(subAns));
             return;
         }
+        
         //遍历全排列数组
         for (int i = 0; i < nums.length; i++) {
             if (!statusArr[i]) {
@@ -48,6 +55,7 @@ public class Permutations {
                 subAns.add(nums[i]);
                 // 封枝
                 statusArr[i] = true;
+                
                 depthFirstSearch(nums, subAns, statusArr, ans);
                 
                 // 状态数组回溯
@@ -55,6 +63,9 @@ public class Permutations {
                 
                 //弹出当前元素
                 subAns.remove(subAns.size() - 1);
+                while (i < nums.length - 1 && (nums[i] == nums[i + 1])) {
+                    i++;
+                }
             }
         }
     }

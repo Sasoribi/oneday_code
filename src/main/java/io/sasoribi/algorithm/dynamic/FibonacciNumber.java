@@ -16,15 +16,13 @@ public class FibonacciNumber {
         if (n == 1)
             return 1;
         
-        int fn = 0;
-        int ans = 0;
-        int temp = 0;
-        for (int i = 2; i < n; i++) {
-            temp = fn;
-            fn += ans;
-            ans = temp;
+        int fn = 0,temp;
+        int ans = 1;
+        for (int i = 2; i < n + 1; i++) {
+            temp = ans;
+            ans += fn;
+            fn = temp;
         }
-        
         return ans;
     }
     

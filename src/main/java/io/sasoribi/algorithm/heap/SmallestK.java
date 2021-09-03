@@ -14,7 +14,7 @@ public class SmallestK {
         Arrays.stream(smallestK(new int[]{1, 3, 5, 7, 2, 4, 6, 8}, 4)).forEach(System.out::println);
     }
     // tips: 完全二叉树性质实现堆:子节点(Index - 1) >> 1 为父节点Index
-    // 父节点(Index << 1) + 1为子节点Index
+    // 父节点(Index << 1) + 1为左子节点Index,与min(left,right)比较来决定交换位置/或者终止循环
     // 大顶堆
     public static int[] smallestK(int[] arr, int k) {
         if(k == 0){

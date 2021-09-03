@@ -12,7 +12,8 @@ import io.sasoribi.algorithm.linkedlist.ListNode;
  * number 0 itself.
  */
 public class AddTwoNumber {
-    
+
+
     //#2. Add Two Numbers
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode prev = new ListNode();

@@ -1,5 +1,7 @@
 package io.sasoribi.algorithm.heap;
 
+import java.util.Arrays;
+
 /**
  * 设计一个算法，找出数组中最小的k个数。以任意顺序返回这k个数均可。
  * 示例：
@@ -8,10 +10,16 @@ package io.sasoribi.algorithm.heap;
  * 输出： [1,2,3,4]
  */
 public class SmallestK {
+    public static void main(String[] args) {
+        Arrays.stream(smallestK(new int[]{1, 3, 5, 7, 2, 4, 6, 8}, 4)).forEach(System.out::println);
+    }
     // tips: 完全二叉树性质实现堆:子节点(Index - 1) >> 1 为父节点Index
     // 父节点(Index << 1) + 1为子节点Index
     // 大顶堆
-    public int[] smallestK(int[] arr, int k) {
+    public static int[] smallestK(int[] arr, int k) {
+        if(k == 0){
+            return new int[]{};
+        }
         int[] ans = new int[k];
         int size = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -23,19 +31,18 @@ public class SmallestK {
                 
                 //exist element
                 upBalanceHeap(ans, size);
+                continue;
             }
-            if (size >= k) {
-                // 元素比堆顶小->替换堆顶->下沉元素;
-                if (ans[0] > arr[i]) {
-                    ans[0] = arr[i];
-                    downBalanceHeap(ans, k);
-                }
+            // 元素比堆顶小->替换堆顶->下沉元素;
+            if (ans[0] > arr[i]) {
+                ans[0] = arr[i];
+                downBalanceHeap(ans, k);
             }
         }
         return ans;
     }
     
-    private void downBalanceHeap(int[] ans, int size) {
+    private static void downBalanceHeap(int[] ans, int size) {
         int parent = 0;
         int temp = ans[0];
         
@@ -46,12 +53,12 @@ public class SmallestK {
             int c = ans[child];
             int right = child + 1;
             // min(left,right)->swap
-            if (right < size && ans[child] > ans[right]) {
+            if (right < size && ans[child] < ans[right]) {
                 c = ans[right];
                 child = right;
             }
             
-            if (temp >= ans[right])
+            if (temp >= ans[child])
                 break;
             ans[parent] = c;
             parent = child;
@@ -61,7 +68,7 @@ public class SmallestK {
     }
     
     //上浮->up
-    private void upBalanceHeap(int[] ans, int size) {
+    private static void upBalanceHeap(int[] ans, int size) {
         int current = --size;
         int parent;
         int temp = ans[current];

@@ -7,9 +7,7 @@ package io.sasoribi.algorithm.binarytree;
  * A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
  */
 public class SortedArrayToBST {
-    public static void main(String[] args) {
-        System.out.println(10+ ((10 - 1 ) >>> 1));
-    }
+
     public TreeNode sortedArrayToBST(int[] nums) {
         return arrayToNums(nums, 0, nums.length - 1);
     }

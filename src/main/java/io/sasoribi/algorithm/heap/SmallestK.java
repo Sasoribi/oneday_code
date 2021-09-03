@@ -22,20 +22,20 @@ public class SmallestK {
         }
         int[] ans = new int[k];
         int size = 0;
-        for (int i = 0; i < arr.length; i++) {
+        for (int j : arr) {
             // compare
             if (size < k) {
-                ans[size++] = arr[i];
+                ans[size++] = j;
                 if (size == 1)
                     continue;
-                
+
                 //exist element
                 upBalanceHeap(ans, size);
                 continue;
             }
             // 元素比堆顶小->替换堆顶->下沉元素;
-            if (ans[0] > arr[i]) {
-                ans[0] = arr[i];
+            if (ans[0] > j) {
+                ans[0] = j;
                 downBalanceHeap(ans, k);
             }
         }
@@ -47,7 +47,7 @@ public class SmallestK {
         int temp = ans[0];
         
         // down
-        int half = size >>> 1;        // loop while a non-leaf -> 获取最后一个叶子的父节点Index(最差的情况的遍历终点)
+        int half = size >>> 1;        // loop while a non-leaf -> 获取第一个叶子节点Index(最差的情况的遍历终点)
         while (parent < half) {
             int child = (parent << 1) + 1; // assume left child is least
             int c = ans[child];

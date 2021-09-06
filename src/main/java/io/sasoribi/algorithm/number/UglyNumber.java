@@ -33,7 +33,6 @@ public class UglyNumber {
             return true;
         if (n <= 0)
             return false;
-        
         //n%2==0 -> 获得另一个因数继续判断是否为丑数
         if (n % 2 == 0)
             return isUgly(n / 2);

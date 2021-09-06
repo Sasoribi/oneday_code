@@ -33,6 +33,7 @@ public class CombinationSumII {
             }
             
             // sum < target -> keep backtracing
+            // 实质上是固定当前元素
             backTracing(candidates, ans, subset, i + 1, target, sum);
             
             //删除当前指向的元素

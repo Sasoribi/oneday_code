@@ -1,4 +1,4 @@
-package io.sasoribi.algorithm.binarytree.array;
+package io.sasoribi.algorithm.array;
 
 import java.util.Arrays;
 

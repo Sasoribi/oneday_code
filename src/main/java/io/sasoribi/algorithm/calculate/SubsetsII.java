@@ -19,36 +19,29 @@ import java.util.List;
  * 输出：[[],[0]]
  */
 public class SubsetsII {
-    public static void main(String[] args) {
-        System.out.println(new SubsetsII().subsetsWithDup(new int[]{1,2,2}));
-    }
+    
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> subset = new ArrayList<>();
-        ans.add(subset);
-        
-        if (nums.length == 0)
-            return ans;
-        
-        //排序,使得可以跳过重复数字 --> 重复子集
         Arrays.sort(nums);
-        
-        recursiveInvoke(nums, ans, subset, 0);
+        List<List<Integer>> ans = new ArrayList<>();
+        ArrayList<Integer> subset = new ArrayList<>();
+        ans.add(subset);
+        recursive(nums, ans, subset, 0);
         
         return ans;
     }
     
-    private void recursiveInvoke(int[] nums, List<List<Integer>> ans, List<Integer> subset, int current) {
+    private void recursive(int[] nums, List<List<Integer>> ans, ArrayList<Integer> subset, int index) {
         
-        for (int i = current; i < nums.length; i++) {
-
+        // 第一次循环记录含有i=0,第二次循环不含i=0的元素;
+        for (int i = index; i < nums.length; i++) {
             subset.add(nums[i]);
-            ans.add(new ArrayList<>(subset));
             
-            recursiveInvoke(nums, ans, subset, i + 1);
+            ans.add((List<Integer>) subset.clone());
+            recursive(nums, ans, subset, i + 1);
             subset.remove(subset.size() - 1);
-    
-            while (i > 0 && i < nums.length && nums[i] == nums[i - 1]) {
+            
+            //跳过已经使用过的数字(排重)
+            while (i < nums.length - 1 && nums[i + 1] == nums[i]) {
                 i++;
             }
         }

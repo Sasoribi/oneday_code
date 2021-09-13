@@ -18,13 +18,15 @@ public class RanTen {
         map.put(9,0);
         map.put(10,0);
         for (int i = 0; i < 10000; i++) {
-            map.put((int) (Math.random() * 7 + 1),map.get((int)(Math.random() * 7) + 1) + 1);
-            
+            int reuslt = (int) (Math.random() * 7 +1);
+            map.put(reuslt,map.get(reuslt) + 1);
         }
         System.out.println(map);
+    
+        System.out.println(map.values().stream().reduce(Integer::sum));
     }
     public int rand10() {
-        
+    
     return 0;
     }
     public int ran7(){

@@ -34,7 +34,7 @@ public class FindPeakElement {
     private int recursiveInvoke(int[] nums, int left, int right) {
         //边界情况无峰值时,返回-1
         if (left > right) {
-            return -1;
+            return left;
         }
         
         //取值方式为总是取左边的数

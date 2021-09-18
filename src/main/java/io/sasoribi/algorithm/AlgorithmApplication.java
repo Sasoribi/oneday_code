@@ -1,13 +1,18 @@
 package io.sasoribi.algorithm;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class AlgorithmApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AlgorithmApplication.class, args);
+    
+    public static void main(String[] args) throws Exception {
+        try{
+            throw new Exception();
+        }finally {
+            System.out.println("Exception...");
+        }
+        
     }
-
+    
 }

@@ -46,25 +46,24 @@ public class ZigZagConversion {
         
         for (int i = 0; i < s.length(); i++) {
             if (!subside) {
-                builders[point].append(s.charAt(i));
-                point++;
+                builders[point++].append(s.charAt(i));
             }
             
             //subside occasion
             if (subside) {
-                builders[point].append(s.charAt(i));
+                builders[point--].append(s.charAt(i));
+            }
+            
+            //reset
+            if (point >= numRows) {
                 point--;
+            } else if (point < 0) {
+                point++;
             }
             
-            if(point == numRows){
-                subside = true;
-            }
-            if(point == 0){
-                subside = false;
-            }
-            
+            if (point == 0 || point == numRows - 1)
+                subside = !subside;
         }
-        
         
         //concat stringbuilders
         for (int i = 0; i < numRows; i++) {

@@ -20,12 +20,12 @@ public class GenerateParentheses {
         
         int count = n * 2;
         
-        recursiveInvoke(temp, n, n, count, 0, result);
+        recursiveInvoke(temp, n, n, 0, result);
         
         return result;
     }
     
-    private void recursiveInvoke(StringBuilder temp, int leftBrace, int rightBrace, int count, int index, List<String> result) {
+    private void recursiveInvoke(StringBuilder temp, int leftBrace, int rightBrace, int index, List<String> result) {
         if (leftBrace > rightBrace) {
             return;
         }
@@ -37,14 +37,14 @@ public class GenerateParentheses {
         if (leftBrace > 0) {
             temp.append('(');
             --leftBrace;
-            recursiveInvoke(temp, leftBrace, rightBrace, count, index + 1, result);
+            recursiveInvoke(temp, leftBrace, rightBrace, index + 1, result);
             temp.deleteCharAt(temp.length() - 1);
             leftBrace++;
         }
         if (rightBrace > 0) {
             temp.append(')');
             --rightBrace;
-            recursiveInvoke(temp, leftBrace, rightBrace, count, index + 1, result);
+            recursiveInvoke(temp, leftBrace, rightBrace, index + 1, result);
             temp.deleteCharAt(temp.length() - 1);
         }
         

@@ -17,7 +17,7 @@ public class RemoveDuplicatesFromSortedList {
         while (next != null) {
             next = next.next;
             
-            //next == next.next 跳过
+            //next.val == next.next.val 跳过 o1->o2->o3  |  o1->o3
             if (next != null) {
                 if (next.val != curruent.val) {
                     curruent.next = next;

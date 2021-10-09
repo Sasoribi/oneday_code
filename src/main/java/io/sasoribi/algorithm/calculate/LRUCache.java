@@ -51,6 +51,7 @@ public class LRUCache {
     private Node head;
     private Node tail;
     private int currentSize = 0;
+    
     public LRUCache(int capacity) {
         cache = new Node[10000];
         size = capacity;
@@ -133,10 +134,11 @@ public class LRUCache {
     
     /**
      * 刷新Head引用-AccessOrInsertOrUpdate
+     *
      * @param node
      */
     private void refreshNode(Node node) {
-        //如果是头结点,不刷新-关键
+        //如果是头结点(已经是最新的节点),不刷新-关键
         if (head == node)
             return;
         
@@ -150,10 +152,7 @@ public class LRUCache {
         }
         
         if (tail == node) {
-            //only one node
-            if (head != tail) {
-                tail = prev;
-            }
+            tail = prev;
         }
         insertHead(node);
     }

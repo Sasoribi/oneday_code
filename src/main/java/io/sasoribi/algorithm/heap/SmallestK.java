@@ -30,7 +30,7 @@ public class SmallestK {
                     continue;
 
                 //exist element
-                upBalanceHeap(ans, size);
+                upBalanceHeap(ans, size - 1);
                 continue;
             }
             // 元素比堆顶小->替换堆顶->下沉元素;
@@ -47,7 +47,7 @@ public class SmallestK {
         int temp = ans[0];
         
         // down
-        int half = size >>> 1;        // loop while a non-leaf -> 获取第一个叶子节点Index(最差的情况的遍历终点)
+        int half = size >>> 1;        // loop while a non-leaf -> 获取第一个叶子节点Index(最差的情况的遍历终点)---比这个大的index没有孩子节点了
         while (parent < half) {
             int child = (parent << 1) + 1; // assume left child is least
             int c = ans[child];
@@ -68,8 +68,8 @@ public class SmallestK {
     }
     
     //上浮->up
-    private static void upBalanceHeap(int[] ans, int size) {
-        int current = --size;
+    private static void upBalanceHeap(int[] ans, int min) {
+        int current = min;
         int parent;
         int temp = ans[current];
         while (current > 0) {
